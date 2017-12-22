@@ -1,35 +1,22 @@
-module Model exposing (Msg(..), Model, init, User, Company)
+module Model exposing (Msg(..), Model, init)
+
+import Model.Companies as Companies
+import Model.Users as Users
 
 
 type Msg
-    = UpdateUserNameField String
-    | AddUser
-    | UpdateCompanyNameField String
-    | AddCompany
-
-
-type alias User =
-    { name : String }
-
-
-type alias Company =
-    { name : String }
+    = UsersMsg Users.Msg
+    | CompaniesMsg Companies.Msg
 
 
 type alias Model =
-    { userNameField : String
-    , companyNameField : String
-    , users : List User
-    , companies : List Company
+    { usersModel : Users.Model
+    , companiesModel : Companies.Model
     }
 
 
-init : ( Model, Cmd Msg )
+init : Model
 init =
-    ( { userNameField = ""
-      , companyNameField = ""
-      , users = []
-      , companies = []
-      }
-    , Cmd.none
-    )
+    { usersModel = Users.init
+    , companiesModel = Companies.init
+    }

@@ -1,29 +1,27 @@
 module Update exposing (update)
 
 import Model exposing (Msg(..), Model)
+import Update.Companies as Companies
+import Update.Users as Users
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
-update msg model =
-    case msg of
-        UpdateUserNameField str ->
-            ( { model | userNameField = str }, Cmd.none )
+update message model =
+    case message of
+        UsersMsg subMsg ->
+            let
+                ( updatedUsersModel, usersCmd ) =
+                    Users.update subMsg model.usersModel
+            in
+                ( { model | usersModel = updatedUsersModel }
+                , Cmd.map UsersMsg usersCmd
+                )
 
-        AddUser ->
-            ( { model
-                | users = { name = model.userNameField } :: model.users
-                , userNameField = ""
-              }
-            , Cmd.none
-            )
-
-        UpdateCompanyNameField str ->
-            ( { model | companyNameField = str }, Cmd.none )
-
-        AddCompany ->
-            ( { model
-                | companies = { name = model.companyNameField } :: model.companies
-                , companyNameField = ""
-              }
-            , Cmd.none
-            )
+        CompaniesMsg subMsg ->
+            let
+                ( updatedCompaniesModel, companiesCmd ) =
+                    Companies.update subMsg model.companiesModel
+            in
+                ( { model | companiesModel = updatedCompaniesModel }
+                , Cmd.map CompaniesMsg companiesCmd
+                )

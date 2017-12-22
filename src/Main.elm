@@ -10,7 +10,7 @@ import View exposing (view)
 main : Program Never Model Msg
 main =
     program
-        { init = init
+        { init = ( init, Cmd.none )
         , view = view
         , update = update
         , subscriptions = subscriptions
