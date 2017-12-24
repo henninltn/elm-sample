@@ -3,7 +3,7 @@ module Update exposing (update)
 import Model exposing (Msg(..), Model)
 import Update.Companies as Companies
 import Update.Users as Users
-import Ports.Greeting as Greeting
+import Update.PortsSample as PortsSample
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -27,14 +27,11 @@ update msg model =
                 , Cmd.map CompaniesMsg companiesCmd
                 )
 
-        MouseMsg position ->
-            ( { model | mousePosition = position }, Cmd.none )
-
-        UpdateNameField str ->
-            ( { model | nameField = str }, Cmd.none )
-
-        FetchGreetingMsg name ->
-            ( model, Greeting.fetchGreeting name )
-
-        ReceiveGreetingMsg greeting ->
-            ( { model | greeting = greeting }, Cmd.none )
+        PortsSampleMsg subMsg ->
+            let
+                ( updatedPortsSampleModel, portsSampleCmd ) =
+                    PortsSample.update subMsg model.portsSampleModel
+            in
+                ( { model | portsSampleModel = updatedPortsSampleModel }
+                , Cmd.map PortsSampleMsg portsSampleCmd
+                )

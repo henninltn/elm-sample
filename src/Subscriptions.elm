@@ -1,13 +1,13 @@
 module Subscriptions exposing (subscriptions)
 
 import Model exposing (Model, Msg(..))
-import Ports.Greeting as Greeting
-import Ports.MyMouse as MyMouse
+import Subscriptions.PortsSample as PortsSample
 
 
 subscriptions : Model -> Sub Msg
-subscriptions _ =
+subscriptions model =
     Sub.batch
-        [ MyMouse.clicks MouseMsg
-        , Greeting.receiveGreeting ReceiveGreetingMsg
+        [ Sub.map
+            PortsSampleMsg
+            (PortsSample.subscriptions model.portsSampleModel)
         ]

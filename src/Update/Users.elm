@@ -4,8 +4,8 @@ import Model.Users exposing (Msg(..), Model)
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
-update message model =
-    case message of
+update msg model =
+    case msg of
         UpdateNameField str ->
             ( { model | nameField = str }, Cmd.none )
 
