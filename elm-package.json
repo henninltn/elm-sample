@@ -3,7 +3,7 @@
   "summary": "a sample project",
   "repository": "https://github.com/henninltn/elm-sample.git",
   "license": "MIT",
-  "source-directories": ["src/."],
+  "source-directories": ["src"],
   "exposed-modules": [],
   "dependencies": {
     "elm-lang/core": "5.1.1 <= v < 6.0.0",

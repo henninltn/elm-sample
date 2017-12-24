@@ -3,11 +3,12 @@ module Update exposing (update)
 import Model exposing (Msg(..), Model)
 import Update.Companies as Companies
 import Update.Users as Users
+import Ports.Greeting as Greeting
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
-update message model =
-    case message of
+update msg model =
+    case msg of
         UsersMsg subMsg ->
             let
                 ( updatedUsersModel, usersCmd ) =
@@ -25,3 +26,15 @@ update message model =
                 ( { model | companiesModel = updatedCompaniesModel }
                 , Cmd.map CompaniesMsg companiesCmd
                 )
+
+        MouseMsg position ->
+            ( { model | mousePosition = position }, Cmd.none )
+
+        UpdateNameField str ->
+            ( { model | nameField = str }, Cmd.none )
+
+        FetchGreetingMsg name ->
+            ( model, Greeting.fetchGreeting name )
+
+        ReceiveGreetingMsg greeting ->
+            ( { model | greeting = greeting }, Cmd.none )
