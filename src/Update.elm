@@ -3,8 +3,8 @@ module Update exposing (update)
 import Model exposing (Msg(..), Model)
 import Update.CmdSubSample as CmdSubSample
 import Update.Companies as Companies
-import Update.Users as Users
 import Update.PortsSample as PortsSample
+import Update.Users as Users
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )

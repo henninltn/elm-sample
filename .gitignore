@@ -1,3 +1,11 @@
+# IDE
+.vscode
+
+# Elm
 elm-stuff/
+
+# Node
 node_modules/
+
+# Projet
 dist/

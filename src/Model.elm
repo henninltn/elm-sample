@@ -2,8 +2,8 @@ module Model exposing (Msg(..), Model, init)
 
 import Model.CmdSubSample as CmdSubSample
 import Model.Companies as Companies
-import Model.Users as Users
 import Model.PortsSample as PortsSample
+import Model.Users as Users
 
 
 type Msg

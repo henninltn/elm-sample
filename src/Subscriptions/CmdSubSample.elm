@@ -6,7 +6,7 @@ import Model.CmdSubSample exposing (Msg(..), Model)
 
 
 subscriptions : Model -> Sub Msg
-subscriptions model =
+subscriptions _ =
     Sub.batch
         [ Mouse.clicks MouseMsg
         , Keyboard.downs KeyMsg

@@ -1,7 +1,7 @@
 module View.CmdSubSample exposing (view)
 
 import Char exposing (KeyCode)
-import Html exposing (Html, button, div, text)
+import Html exposing (..)
 import Html.Events exposing (onClick)
 import Model.CmdSubSample exposing (Msg(..), Model)
 import Mouse exposing (Position)
