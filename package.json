@@ -8,11 +8,13 @@
   "license": "MIT",
   "scripts": {
     "setup": "yarn install && elm package install -y",
-    "build": "webpack"
+    "build": "webpack",
+    "serve": "webpack-dev-server"
   },
   "devDependencies": {
     "elm-webpack-loader": "^4.4.0",
     "file-loader": "^1.1.6",
-    "webpack": "^3.10.0"
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.9.7"
   }
 }
