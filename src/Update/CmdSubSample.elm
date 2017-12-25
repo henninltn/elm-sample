@@ -12,3 +12,9 @@ update msg model =
 
         OnResult res ->
             ( { model | rollResult = res }, Cmd.none )
+
+        MouseMsg position ->
+            ( { model | mousePosition = position }, Cmd.none )
+
+        KeyMsg keyCode ->
+            ( { model | downedKey = Just keyCode }, Cmd.none )
